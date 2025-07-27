@@ -55,47 +55,47 @@ export function AuthProvider({ children }) {
   };
 
   const register = async (name, email, password, role) => {
-    try {
-      const response = await fetch('https://teg-backend.vercel.app/auth/register', {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'include', // Para cookies/sessões
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({ name, email, password, role }),
-      });
+  try {
+    const response = await fetch('https://teg-backend.vercel.app/auth/register', {
+      method: 'POST',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ name, email, password, role })
+    });
 
-      // Verifica se a resposta foi bem-sucedida
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Erro no registro');
-      }
-
-      const data = await response.json();
-      
-      // Se o backend retornar um token no registro
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        const payload = JSON.parse(atob(data.token.split('.')[1]));
-        setUser({
-          id: payload.id,
-          email: payload.email,
-          name: payload.name,
-          role: payload.role,
-        });
-      }
-
-      return { success: true, data };
-    } catch (error) {
-      console.error('Erro no registro:', error);
-      return { 
-        success: false, 
-        error: error.message || 'Falha no registro. Tente novamente.' 
-      };
+    // Verifica se a resposta foi bem-sucedida
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || 'Erro no registro');
     }
-  };
+
+    const data = await response.json();
+    
+    // Se o backend retornar um token no registro
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      const payload = JSON.parse(atob(data.token.split('.')[1]));
+      setUser({
+        id: payload.id,
+        email: payload.email,
+        name: payload.name,
+        role: payload.role,
+      });
+    }
+
+    return { success: true, data };
+  } catch (error) {
+    console.error('Erro no registro:', error);
+    return { 
+      success: false, 
+      error: error.message || 'Falha no registro. Tente novamente.' 
+    };
+  }
+};
 
   const login = async (email, password) => {
     try {
