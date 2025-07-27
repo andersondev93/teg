@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Dashboard.module.css';
 import Header from '../components/Header';
+import Image from 'next/image';
 
 const Dashboard = () => {
   // Lista de jogos disponíveis
@@ -298,7 +299,7 @@ const Dashboard = () => {
             >
               <div className={styles.gameThumbnail}>
                 {game.thumbnail ? (
-                  <img src={game.thumbnail} alt={game.title} />
+                  <Image src={game.thumbnail} alt={game.title} />
                 ) : (
                   <div className={styles.thumbnailPlaceholder}>
                     {game.subject.charAt(0)}

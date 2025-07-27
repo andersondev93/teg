@@ -157,7 +157,7 @@ export default function Home() {
             {/* Testimonial 1 */}
             <div className={styles.testimonialCard}>
               <div className={styles.testimonialStars}>⭐⭐⭐⭐⭐</div>
-              <p className={styles.testimonialText}>"A TEG revolucionou nossa escola! Os alunos estão mais engajados do que nunca. As notas de matemática subiram 35% em apenas um semestre."</p>
+              <p className={styles.testimonialText}>&quot;A TEG revolucionou nossa escola! Os alunos estão mais engajados do que nunca. As notas de matemática subiram 35% em apenas um semestre.&quot;</p>
               <div className={styles.testimonialAuthor}>
                 <div className={styles.authorInitial}>M</div>
                 <div>
@@ -170,7 +170,7 @@ export default function Home() {
             {/* Testimonial 2 */}
             <div className={styles.testimonialCard}>
               <div className={styles.testimonialStars}>⭐⭐⭐⭐⭐</div>
-              <p className={styles.testimonialText}>"Nunca pensei que matemática pudesse ser tão divertida! Agora eu quero fazer todas as lições e competir com meus amigos."</p>
+              <p className={styles.testimonialText}>&quot;Nunca pensei que matemática pudesse ser tão divertida! Agora eu quero fazer todas as lições e competir com meus amigos.&quot;</p>
               <div className={styles.testimonialAuthor}>
                 <div className={styles.authorInitial}>L</div>
                 <div>
@@ -183,7 +183,7 @@ export default function Home() {
             {/* Testimonial 3 */}
             <div className={styles.testimonialCard}>
               <div className={styles.testimonialStars}>⭐⭐⭐⭐⭐</div>
-              <p className={styles.testimonialText}>"Como professora, vejo a diferença no interesse dos alunos. A plataforma me ajuda a identificar dificuldades rapidamente."</p>
+              <p className={styles.testimonialText}>&quot;Como professora, vejo a diferença no interesse dos alunos. A plataforma me ajuda a identificar dificuldades rapidamente.&quot;</p>
               <div className={styles.testimonialAuthor}>
                 <div className={styles.authorInitial}>A</div>
                 <div>

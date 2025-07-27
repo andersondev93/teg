@@ -134,7 +134,7 @@ export default function Login() {
           </form>
 
           <div className={styles.loginFooter}>
-            <p>Não tem uma conta? <a href="/register">Crie uma agora</a></p>
+            <p>Não tem uma conta? <Link href="/register/">Cadastre-se</Link></p>
             
           </div>
         </div>
