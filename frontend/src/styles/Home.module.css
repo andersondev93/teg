@@ -617,7 +617,7 @@
   max-width: 1200px;
   margin: 0 auto;
 }
-
+ 
 .footerColumn {
   display: flex;
   flex-direction: column;
@@ -709,4 +709,10 @@
   .featureCard, .testimonialCard {
     padding: 1.5rem;
   }
+
+  .logoImage img{
+  display: none;
+  }
+
+  
 }
