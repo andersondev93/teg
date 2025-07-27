@@ -6,51 +6,43 @@ const authRoutes = require("./routes/auth.routes");
 
 const app = express();
 
-// 1. Lista de origens permitidas atualizada
+// 1. Configuração robusta de CORS
 const allowedOrigins = [
-  'http://localhost:3000', 
   'https://teg-alpha.vercel.app',
-  'https://teg-alpha.vercel.app/' // Adicione com e sem barra no final
+  'http://localhost:3000'
 ];
 
-// 2. Middleware de CORS melhorado
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Permitir requisições sem origin (como Postman, mobile apps) em desenvolvimento
-    if (process.env.NODE_ENV !== 'production' && !origin) {
-      return callback(null, true);
-    }
-    
-    // Verificar se a origem está na lista de permitidas
-    if (allowedOrigins.some(allowedOrigin => {
-      return origin === allowedOrigin || 
-             origin?.startsWith(allowedOrigin.replace(/\/$/, ''));
-    })) {
-      return callback(null, true);
-    }
-    
-    callback(new Error('Not allowed by CORS'));
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  optionsSuccessStatus: 200 // Para navegadores legados
-};
+// Middleware para pré-requisições OPTIONS
+app.options('*', (req, res) => {
+  const origin = req.headers.origin;
+  
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    return res.status(200).send();
+  }
+  
+  return res.status(403).send();
+});
 
-// 3. Aplicar CORS globalmente
-app.use(cors(corsOptions));
-
-// 4. Middleware para pré-requisições OPTIONS
-app.options('*', cors(corsOptions)); // Habilita OPTIONS para todas as rotas
-
-// 5. Middleware para capturar erros CORS
+// Middleware CORS principal
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  );
+  const origin = req.headers.origin;
+  
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Expose-Headers', 'Authorization');
+  }
+  
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    return res.status(200).json({});
+  }
+  
   next();
 });
 
@@ -59,27 +51,25 @@ app.use(express.json());
 // Rotas
 app.use("/auth", authRoutes);
 
-// Rota de health check
-app.get("/", (req, res) => res.json({ 
-  status: "running",
-  environment: process.env.NODE_ENV || 'development'
-}));
-
-// 6. Middleware de erro para CORS
-app.use((err, req, res, next) => {
-  if (err.message === 'Not allowed by CORS') {
-    return res.status(403).json({ 
-      error: 'Acesso não permitido',
-      details: `Origem ${req.headers.origin} não autorizada`
-    });
-  }
-  next(err);
+// Health Check
+app.get("/", (req, res) => {
+  res.json({
+    status: "API Online",
+    cors: {
+      allowedOrigins: allowedOrigins,
+      message: "CORS configurado corretamente"
+    }
+  });
 });
 
-// Start server
+// Tratamento de erros
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Algo quebrou!');
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
-  console.log(`Ambiente: ${process.env.NODE_ENV || 'development'}`);
   console.log(`Origens permitidas: ${allowedOrigins.join(', ')}`);
 });
