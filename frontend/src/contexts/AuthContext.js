@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
 
   const register = async (name, email, password, role) => {
   try {
-    const response = await fetch('http://localhost:3001/auth/register' || 'https://teg-backend.vercel.app/auth/register', {
+    const response = await fetch('https://teg-backend.vercel.app/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
