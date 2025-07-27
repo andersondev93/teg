@@ -6,7 +6,7 @@ const authRoutes = require("./routes/auth.routes");
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000' || 'https://teg-alpha.vercel.app/', // ou a URL do seu frontend
+  origin: ['http://localhost:3000', 'https://teg-alpha.vercel.app/'] , // ou a URL do seu frontend
   credentials: true
 }));
 app.use(express.json());
