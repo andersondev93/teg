@@ -1,0 +1,460 @@
+/* Estilos gerais */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+  font-size: 2.2rem;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #3498db;
+  margin: 0.5rem auto 0;
+}
+
+/* Seção Hero */
+.pricingHero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+
+.pricingHero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.pricingHero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.heroBenefits {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.heroBenefits span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+/* Grid de Planos */
+.pricingPlans {
+  margin: 4rem 0;
+}
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.planCard {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.planCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.featuredPlan {
+  transform: scale(1.03);
+  border: 2px solid #3498db;
+}
+
+.featuredPlan:hover {
+  transform: scale(1.03) translateY(-5px);
+}
+
+.featuredBadge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #3498db;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+}
+
+.planHeader {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.planHeader h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.planPrice {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.planPrice span:first-child {
+  color: #3498db;
+}
+
+.planPrice span:last-child {
+  font-size: 1rem;
+  color: #7f8c8d;
+  font-weight: normal;
+}
+
+.billingInfo {
+  font-size: 0.9rem;
+  color: #95a5a6;
+  margin-top: 0.5rem;
+}
+
+.planFeatures {
+  flex: 1;
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.planFeatures li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #34495e;
+}
+
+.featureIcon {
+  color: #3498db;
+  font-size: 1.1rem;
+  margin-top: 0.2rem;
+}
+
+.planButton {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.primaryButton {
+  background: #3498db;
+  color: white;
+}
+
+.primaryButton:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 0.75rem;
+}
+
+.secondaryButton:hover {
+  background: #f8f9fa;
+  color: #2c3e50;
+  transform: translateY(-2px);
+}
+
+.trialInfo {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 1rem;
+}
+
+/* Seção de Comparação */
+.comparisonSection {
+  margin: 5rem 0;
+}
+
+.comparisonTable {
+  overflow-x: auto;
+  margin-top: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.comparisonTable table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.comparisonTable th {
+  background: #3498db;
+  color: white;
+  font-weight: 600;
+}
+
+.comparisonTable tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.comparisonTable tr:hover {
+  background-color: #ecf0f1;
+}
+
+/* Seção de Depoimentos */
+.testimonialsSection {
+  margin: 5rem 0;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonialCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.testimonialCard::before {
+  content: '"';
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 4rem;
+  color: #3498db20;
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonialQuote {
+  font-style: italic;
+  color: #34495e;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonialAuthor {
+  font-weight: 600;
+  color: #3498db;
+  text-align: right;
+}
+
+/* Seção FAQ */
+.pricingFAQ {
+  margin: 5rem 0;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.faqItem {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.faqItem h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.faqItem p {
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+/* CTA Final */
+.finalCTA {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  border-radius: 10px;
+  margin: 3rem 0;
+}
+
+.finalCTA h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.finalCTA p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 4rem 2rem 2rem;
+}
+
+.footerColumns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footerLogo {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerLogo .logoMain {
+  font-size: 1.5rem;
+}
+
+.footerLogo .logoSub {
+  font-size: 0.6rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+.footerColumn h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footerColumn a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footerColumn a:hover {
+  color: var(--white);
+}
+
+.footerBottom {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .pricingHero h1 {
+    font-size: 2rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  
+  .heroBenefits {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .plansGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featuredPlan {
+    transform: none;
+  }
+  
+  .featuredPlan:hover {
+    transform: translateY(-5px);
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ctaButtons a {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
