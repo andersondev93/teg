@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Auth.module.css';
 import Header from '../components/Header';
+import Link from 'next/link';
 
 export default function Login() {
   const [email, setEmail] = useState('');

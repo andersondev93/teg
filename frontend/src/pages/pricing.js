@@ -217,7 +217,7 @@ export default function Pricing() {
           <div className={styles.testimonialsGrid}>
             {testimonials.map((testimonial, index) => (
               <div key={index} className={styles.testimonialCard}>
-                <p className={styles.testimonialQuote}>"{testimonial.quote}"</p>
+                <p className={styles.testimonialQuote}>&quot;{testimonial.quote}&quot;</p>
                 <p className={styles.testimonialAuthor}>— {testimonial.author}</p>
               </div>
             ))}

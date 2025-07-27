@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Register.module.css';
 import Header from '../components/Header';
+import Link from 'next/link';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -201,7 +202,7 @@ export default function Register() {
           </form>
 
           <div className={styles.registerFooter}>
-            <p>Já tem uma conta? <a href="/login">Faça login</a></p>
+            <p>Já tem uma conta? <Link href="/login/">Já tem conta? Faça login</Link></p>
           </div>
         </div>
       </div>
